@@ -23,6 +23,7 @@ package cmd
 
 import (
 	"context"
+	"fmt"
 	"os"
 
 	"github.com/cybozu-go/well"
@@ -48,6 +49,7 @@ to quickly create a Cobra application.`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Fprintf(os.Stderr, "This will continue to generate forever.\nPlease Enter Ctrl-C\n")
 		out := os.Stdout
 		WriteHeader(out)
 		well.Go(func(ctx context.Context) error {

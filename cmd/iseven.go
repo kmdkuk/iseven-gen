@@ -24,7 +24,7 @@ func IsEven(number interface{}) bool {
 }
 
 func WriteContent(ctx context.Context, w io.Writer) {
-	num := 0
+	num := 1
 	for {
 		select {
 		case <-ctx.Done():
@@ -32,6 +32,9 @@ func WriteContent(ctx context.Context, w io.Writer) {
 		default:
 			WriteNumber(w, num)
 			num++
+			if num == 999999 {
+				return
+			}
 		}
 	}
 }
@@ -89,7 +92,6 @@ func numToStr(num int) string {
 	}
 	str := []string{}
 	d := digit(num)
-	fmt.Println(d)
 	for i, n := range d {
 		u := i % 3
 		uu := i / 3
@@ -149,7 +151,7 @@ func reverseStr(list []string) []string {
 }
 
 func isEven(num int) bool {
-	return true
+	return num%2 == 0
 }
 
 func WriteFooter(w io.Writer) {
