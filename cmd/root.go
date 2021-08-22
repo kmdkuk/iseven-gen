@@ -22,6 +22,10 @@ THE SOFTWARE.
 package cmd
 
 import (
+	"context"
+	"os"
+
+	"github.com/cybozu-go/well"
 	"github.com/kmdkuk/iseven-gen/log"
 	"github.com/spf13/cobra"
 
@@ -43,7 +47,19 @@ This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
-	//	Run: func(cmd *cobra.Command, args []string) { },
+	Run: func(cmd *cobra.Command, args []string) {
+		out := os.Stdout
+		WriteHeader(out)
+		well.Go(func(ctx context.Context) error {
+			WriteContent(ctx, out)
+			return nil
+		})
+		if err := well.Wait(); err != nil {
+			WriteFooter(out)
+			return
+		}
+		WriteFooter(out)
+	},
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
