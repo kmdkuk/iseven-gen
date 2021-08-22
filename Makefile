@@ -20,16 +20,16 @@ ifndef CGO_LDFLAGS
     export CGO_LDFLAGS := $(LDFLAGS)
 endif
 
-GO_LDFLAGS := -X github.com/kmdkuk/go-cli-template/version.Revision=$(REVISION) $(GO_LDFLAGS)
-GO_LDFLAGS := -X github.com/kmdkuk/go-cli-template/version.BuildDate=$(BUILD_DATE) $(GO_LDFLAGS)
+GO_LDFLAGS := -X github.com/kmdkuk/iseven-gen/version.Revision=$(REVISION) $(GO_LDFLAGS)
+GO_LDFLAGS := -X github.com/kmdkuk/iseven-gen/version.BuildDate=$(BUILD_DATE) $(GO_LDFLAGS)
 DEV_LDFLAGS := $(GO_LDFLAGS)
-GO_LDFLAGS := -X github.com/kmdkuk/go-cli-template/version.Version=$(VERSION) $(GO_LDFLAGS)
+GO_LDFLAGS := -X github.com/kmdkuk/iseven-gen/version.Version=$(VERSION) $(GO_LDFLAGS)
 
-bin/go-cli-template: $(BUILD_FILES)
+bin/iseven-gen: $(BUILD_FILES)
 	go build -trimpath -ldflags "$(GO_LDFLAGS)" -o "$@" .
 
 dev: $(BUILD_FILES)
-	go build -trimpath -ldflags "$(DEV_LDFLAGS)" -o "bin/go-cli-template-dev" .
+	go build -trimpath -ldflags "$(DEV_LDFLAGS)" -o "bin/iseven-gen-dev" .
 
 test:
 	go test ./...

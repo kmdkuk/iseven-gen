@@ -1,4 +1,4 @@
-module github.com/kmdkuk/go-cli-template
+module github.com/kmdkuk/iseven-gen
 
 go 1.14
 

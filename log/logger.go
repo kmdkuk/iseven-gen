@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"runtime"
 
-	"github.com/kmdkuk/go-cli-template/version"
+	"github.com/kmdkuk/iseven-gen/version"
 )
 
 type Level int
