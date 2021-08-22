@@ -32,9 +32,6 @@ func WriteContent(ctx context.Context, w io.Writer) {
 		default:
 			WriteNumber(w, num)
 			num++
-			if num == 999999 {
-				return
-			}
 		}
 	}
 }
